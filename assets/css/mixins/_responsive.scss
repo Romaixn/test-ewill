@@ -1,0 +1,34 @@
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+/// @example scss - strip-unit mixin
+///   strip-unit(1920px);
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/// return the content under the breakpoint param
+/// @param {number} $size the breakpoint
+/// @output {content} content to add
+/// @require {mixin} strip-unit - to call mixin without unit
+/// @example scss - above mixin
+///   under(1200) { display: block; }
+@mixin under($size) {
+  $size: strip-unit($size);
+  @media (max-width: #{$size}px) { @content; }
+}
+
+/// return the content above the breakpoint param
+/// @param {number} $size the breakpoint
+/// @output {content} content to add
+/// @require {mixin} strip-unit - to call mixin without unit
+/// @example scss - above mixin
+///   above(1200) { display: block; }
+@mixin above($size) {
+  $size: strip-unit($size);
+  @media (min-width: #{$size}px) { @content; }
+}

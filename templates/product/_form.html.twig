@@ -1,0 +1,53 @@
+{{ form_start(form) }}
+<div class="grid grid-cols-1 gap-8 my-8 md:grid-cols-3">
+	<div class="col-span-1">
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		<div class="form-error">
+			{{ form_errors(form.name) }}
+		</div>
+	</div>
+
+	<div class="col-span-1">
+		{{ form_label(form.price) }}
+		{{ form_widget(form.price) }}
+		<div class="form-error">
+			{{ form_errors(form.price) }}
+		</div>
+	</div>
+
+	<div class="col-span-1">
+		{{ form_label(form.reference) }} (13 chiffres)
+		{{ form_widget(form.reference) }}
+		<div class="form-error">
+			{{ form_errors(form.reference) }}
+		</div>
+	</div>
+
+	<div class="col-span-1 md:col-span-3">
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description) }}
+		<div class="form-error">
+			{{ form_errors(form.description) }}
+		</div>
+	</div>
+
+	<div class="col-span-1">
+		<div class="flex items-center">
+			<div class="mr-4">
+				{{ form_label(form.photo) }}
+			</div>
+			{{ form_widget(form.photo) }}
+		</div>
+		<div class="form-error">
+			{{ form_errors(form.photo) }}
+		</div>
+	</div>
+
+	{{ form_rest(form) }}
+</div>
+
+{# Ouvre une div qui se ferme dans new et edit #}
+<div class="flex flex-col md:flex-row">
+	<button class="mb-4 md:w-auto btn btn-info md:mb-0">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

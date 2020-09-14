@@ -1,0 +1,5 @@
+<form class="w-auto" method="post" action="{{ path('product_delete', {'slug': product.slug}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+    <button class="w-full md:w-auto btn btn-danger md:ml-4">Supprimer</button>
+</form>
