@@ -40,6 +40,12 @@ Appliquer les migrations :
 symfony console doctrine:migrations:migrate
 ```
 
+Charger les données de test :
+
+```bash
+symfony console doctrine:fixtures:load
+```
+
 ### Démarrer l'application
 
 > Pour démarrer l'application, il faut installer `symfony`, vous pouvez l'installer via :
