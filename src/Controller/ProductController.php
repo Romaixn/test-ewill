@@ -22,7 +22,7 @@ class ProductController extends AbstractController
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $productRepository->findBy([], ['id' => 'DESC']),
         ]);
     }
 
@@ -51,7 +51,9 @@ class ProductController extends AbstractController
 			}
 
             $entityManager->persist($product);
-            $entityManager->flush();
+			$entityManager->flush();
+			
+			$this->addFlash('success', 'Produit créé avec succès !');
 
             return $this->redirectToRoute('product_index');
         }
@@ -94,7 +96,9 @@ class ProductController extends AbstractController
 				$product->setPhotoFilename($filename);
 			}
 
-            $this->getDoctrine()->getManager()->flush();
+			$this->getDoctrine()->getManager()->flush();
+			
+			$this->addFlash('success', 'Produit modifié avec succès');
 
             return $this->redirectToRoute('product_index');
         }
@@ -113,7 +117,8 @@ class ProductController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
-            $entityManager->flush();
+			$entityManager->flush();
+			$this->addFlash('success', 'Produit supprimé avec succès');
         }
 
         return $this->redirectToRoute('product_index');

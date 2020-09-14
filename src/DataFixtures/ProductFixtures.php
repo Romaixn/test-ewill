@@ -31,6 +31,7 @@ class ProductFixtures extends Fixture
 				->setDescription($this->faker->paragraph(3, true))
 				->setPrice($this->faker->randomFloat(2, 0, 50))
 				->setPhotoFilename($this->faker->randomElement($photos))
+				->setQuantity($this->faker->randomDigit())
 			;
 
 			$manager->persist($product);

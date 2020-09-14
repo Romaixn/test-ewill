@@ -1,0 +1,24 @@
+.flash-message {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+%flash {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: .25rem;
+}
+
+.flash-success {
+  @extend %flash;
+  border: 1px solid #38b2ac;
+  background-color: #e6fffa;
+}
+
+.flash-error {
+  @extend %flash;
+  border: 1px solid #fc8181;
+  background-color: #fff5f5;
+}

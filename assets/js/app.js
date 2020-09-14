@@ -12,3 +12,4 @@ import '../css/app.scss';
 // import $ from 'jquery';
 
 require('./components/nav');
+require('./components/search');

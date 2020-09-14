@@ -1,5 +1,5 @@
 {{ form_start(form) }}
-<div class="grid grid-cols-1 gap-8 my-8 md:grid-cols-3">
+<div class="grid grid-cols-1 gap-8 my-8 md:grid-cols-2">
 	<div class="col-span-1">
 		{{ form_label(form.name) }}
 		{{ form_widget(form.name) }}
@@ -24,7 +24,15 @@
 		</div>
 	</div>
 
-	<div class="col-span-1 md:col-span-3">
+	<div class="col-span-1">
+		{{ form_label(form.quantity) }}
+		{{ form_widget(form.quantity) }}
+		<div class="form-error">
+			{{ form_errors(form.quantity) }}
+		</div>
+	</div>
+
+	<div class="col-span-1 md:col-span-2">
 		{{ form_label(form.description) }}
 		{{ form_widget(form.description) }}
 		<div class="form-error">

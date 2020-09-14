@@ -54,10 +54,15 @@ class Product
     private $slug;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=13, unique=true)
 	 * @Assert\Regex("/^\d{13}$/")
      */
     private $reference;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $quantity;
 
     public function getId(): ?int
     {
@@ -125,16 +130,16 @@ class Product
 	}
 	
 	public function computeSlug(SluggerInterface $slugger)
-             {
-                 if (!$this->slug || '-' === $this->slug) {
-                     $this->slug = (string) $slugger->slug((string) $this)->lower();
-                 }
-         	}
+                      {
+                          if (!$this->slug || '-' === $this->slug) {
+                              $this->slug = (string) $slugger->slug((string) $this)->lower();
+                          }
+                  	}
 	
 	public function __toString()
-         	{
-         		return $this->name;
-         	}
+                  	{
+                  		return $this->name;
+                  	}
 
     public function getReference(): ?int
     {
@@ -144,6 +149,18 @@ class Product
     public function setReference(int $reference): self
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(?int $quantity): self
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }
